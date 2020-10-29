@@ -1,0 +1,36 @@
+﻿@model SuppliersMVC.Models.Group
+
+@{
+    ViewBag.Title = "Details of Group";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Group</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SuppliersList)
+        </dt>
+        <dd>
+            @foreach (var supplier in Model.SuppliersList)
+            {
+                <div>
+                    @Html.ActionLink(supplier.Name, "Details/" + supplier.SupplierId, "Suppliers")
+                </div>
+            }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit group", "Edit", new { id = Model.GroupId }) |
+    @Html.ActionLink("Back to list of Groups", "Index")
+</p>
